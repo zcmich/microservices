@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.util.Date;
 
-@ControllerAdvice //applicable to all controllers
+@ControllerAdvice //applicable to all controllersvv
 @RestController
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
@@ -33,7 +33,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 
     @Override //we redefined methode resposible for sending response when validation not ok
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), "Validation failed", ex.getBindingResult().toString()); //getBindingResult() give error reason
+        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), "Validation failed!", ex.getBindingResult().toString()); //getBindingResult() give error reason
 
         return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
